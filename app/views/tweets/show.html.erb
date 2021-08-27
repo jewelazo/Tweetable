@@ -1,0 +1,17 @@
+<ul>
+    <li><%= @tweet.user.name %> <%= link_to "@#{@tweet.user.username}", @tweet  %></li>
+    <li><p class="content--sm gray-300"><%= time_ago_in_words(@tweet.created_at) %></p></li>
+    <li><%= @tweet.body %></li>
+    <li><%= @tweet.comments_count%></li>
+</ul>
+
+<% @tweet_comments.each do |tweet_comment| %>
+    <% break if tweet_comment.id.nil? %>
+    <div>
+        <ul>
+            <li><%= tweet_comment.user.name %> <%= link_to "@#{tweet_comment.user.username}", tweets_path %></li>
+            <li><p class="content--sm gray-300"><%= time_ago_in_words(tweet_comment.created_at) %></p></li>
+            <li><%= tweet_comment.body %></li>
+        </ul>
+    </div>
+<% end %>
