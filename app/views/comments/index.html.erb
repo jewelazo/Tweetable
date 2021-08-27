@@ -1,4 +1,9 @@
 <ul>
+    <% if  @tweet.user.avatar.attached?%>
+        <div><%= image_tag @tweet.user.avatar %></div>
+    <% else %>
+        <div><img src="/images/avatar.png" alt="anonymus"></div>
+    <% end %>
     <li><%= @tweet.user.name %> <%= link_to "@#{@tweet.user.username}", tweets_path  %></li>
     <li><p class="content--sm gray-300"><%= time_ago_in_words(@tweet.created_at) %></p></li>
     <li><%= @tweet.body %></li>
@@ -25,6 +30,11 @@
     <% break if comment.id.nil? %>
     <div>
         <ul>
+            <% if  comment.user.avatar.attached?%>
+                <div><%= image_tag comment.user.avatar %></div>
+            <% else %>
+                <div><img src="/images/avatar.png" alt="anonymus"></div>
+            <% end %>
             <li><%= comment.user.name %> <%= link_to "@#{comment.user.username}", tweets_path %></li>
             <li><p class="content--sm gray-300"><%= time_ago_in_words(comment.created_at) %></p></li>
             <li><%= comment.body %></li>
