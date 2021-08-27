@@ -1,10 +1,24 @@
+<%= form_with model:@tweet_new do |form| %>
+    <div class="flex gap-16 mb-8 flex-column">
+        <div class="input">
+            <div class="input__container">
+                <%= form.text_area :body,placeholder: "Remember to thing before write..." ,  class: "input__content"%>
+            </div>
+        </div>
+        <%= form.submit "Tweet", class: "btn btn--primary btn--fit-content " %>
+    </div>
+<% end %>
+
+
 <% @tweets.each do |tweet| %>
     <div>
         <ul>
             <li><%= tweet.user.name %> <%= link_to "@#{tweet.user.username}", tweets_path %></li>
             <li><p class="content--sm gray-300"><%= time_ago_in_words(tweet.created_at) %></p></li>
-            <li><%= link_to "#{tweet.body}", tweet %></li>
+            <li><%= link_to "#{tweet.body}","/tweets/#{tweet.id}/comments"%></li>
             <li><%= tweet.comments_count %></li>
+            <li><%= link_to "edit", edit_tweet_path(tweet) %></li>
+            <li><%= link_to "delete", tweet_path(tweet), method: :delete %></li>
         </ul>
     </div>
 <% end %>
