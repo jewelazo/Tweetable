@@ -1,0 +1,35 @@
+<ul>
+    <li><%= @tweet.user.name %> <%= link_to "@#{@tweet.user.username}", tweets_path  %></li>
+    <li><p class="content--sm gray-300"><%= time_ago_in_words(@tweet.created_at) %></p></li>
+    <li><%= @tweet.body %></li>
+    <li><%= @tweet.comments_count%></li>
+</ul>
+
+<%= form_with model:@comment_new do |form| %>
+    <div class="flex gap-16 mb-8 flex-column">
+        <div class="input">
+            <div class="input__container">
+                <%= form.text_area :body,placeholder: "Remember to thing before write..." ,  class: "input__content"%>
+            </div>
+        </div>
+        <%= form.hidden_field :tweet_id, value: @comment_new.tweet_id %>
+        <%= form.hidden_field :user_id, value: @comment_new.user_id %>
+        <%= form.submit "Comment", class: "btn btn--primary btn--fit-content " %>
+        
+
+    </div>
+<% end %>
+
+
+<% @comments.each do |comment| %>
+    <% break if comment.id.nil? %>
+    <div>
+        <ul>
+            <li><%= comment.user.name %> <%= link_to "@#{comment.user.username}", tweets_path %></li>
+            <li><p class="content--sm gray-300"><%= time_ago_in_words(comment.created_at) %></p></li>
+            <li><%= comment.body %></li>
+            <li><%= link_to "edit", "/tweets/#{comment.tweet.id}/comments/#{comment.id}/edit" %></li>
+            <li><%= link_to "delete", "/tweets/#{comment.tweet.id}/comments/#{comment.id}", method: :delete %></li>
+        </ul>
+    </div>
+<% end %>
