@@ -19,10 +19,16 @@
                 <div class="input__container">
                     <%= form.text_area :body,placeholder: "Remember to thing before write..." ,  class: "input__content"%>
                 </div>
+                
             </div>
             <%= form.hidden_field :tweet_id, value: @comment_new.tweet_id %>
             <%= form.hidden_field :user_id, value: @comment_new.user_id %>
             <%= form.submit "Comment", class: "btn btn--primary btn--fit-content " %>
+            <% if @comment_new.errors.messages[:body].any? %>
+                <span class="content--sm input__error-message">
+                    <%= @comment_new.errors.messages[:body].join(", ")%>
+                </span>
+            <% end %>
             
 
         </div>
@@ -50,3 +56,5 @@
 
     </div>
 </div>
+
+<%= link_to "Back" ,class:,tweets_path %>

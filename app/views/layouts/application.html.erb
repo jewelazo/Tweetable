@@ -10,6 +10,23 @@
   </head>
 
   <body>
+    <div class="navbar__right align-center">
+      <% if user_signed_in? %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn--primary" %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn--secondary" %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path, class: "btn btn--secondary" %>
+      <% end %>
+    </div>
+    <% flash.each do |type, message|%>
+        <div class="flex gap-16 flash-card">
+          <%= image_tag "/images/icons/#{type}.svg" %>
+          <div class="text-left">
+            <p class="heading heading--xs"><%=type.to_s.capitalize%></p>
+            <p class="content--lg"><%=message%></p>
+          </div>
+        </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

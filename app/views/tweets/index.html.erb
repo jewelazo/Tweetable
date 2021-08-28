@@ -7,8 +7,14 @@
                         <div class="input__container">
                             <%= form.text_area :body,placeholder: "Remember to thing before write..." ,  class: "input__content"%>
                         </div>
+                        <% if @tweet_new.errors.messages[:body].any? %>
+                        <span class="content--sm input__error-message">
+                            <%= @tweet_new.errors.messages[:body].join(", ")%>
+                        </span>
+                        <% end %>
                     </div>
-            <%= form.submit "Tweet", class: "btn btn--primary btn--fit-content " %>
+                </div>
+        <%= form.submit "Tweet", class: "btn btn--primary btn--fit-content " %>
         <% end %>
     
 
