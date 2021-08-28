@@ -1,0 +1,41 @@
+.avatar {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+}
+
+.avatar--profile{
+  height: 96px;
+  width: 96px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.profile-navs{
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-link {
+  width: 48%;
+  padding-bottom: 4px;
+}
+
+.profile-link:hover{
+  border-bottom: 2px solid;
+}
+
+.profile-link.active{
+  border-bottom: 2px solid;
+}
+
+.profile-link__likes, .profile-link__tweets {
+  color: var(--gray-400);
+  text-align: center;
+}
+
