@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'design/components'
   get 'design/sections'
   root to: 'tweets#index'

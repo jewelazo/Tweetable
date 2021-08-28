@@ -4,6 +4,11 @@
 
     <%= form.label :body %>
     <%= form.text_area :body %>
+    <% if @tweet.errors.messages[:body].any? %>
+        <span class="content--sm input__error-message">
+            <%= @tweet.errors.messages[:body].join(", ")%>
+        </span>
+    <% end %>
     <%= form.hidden_field :user_id, value: @tweet.user_id %>
 
   <%= form.submit class: "btn btn--primary btn--fit-content" %>
