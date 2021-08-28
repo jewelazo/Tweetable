@@ -1,0 +1,18 @@
+.critic {
+  padding: 8px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 2px solid var(--secondary-100);
+  margin-top: 16px;
+}
+
+.critic__footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.critic__actions {
+  display: flex;
+  gap: 8px;
+}

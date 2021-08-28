@@ -16,7 +16,8 @@ puts "Start seeding Users"
   user_data = { 
     email: Faker::Internet.email,
     username: Faker::Internet.username,
-    name: Faker::Artist.name}
+    name: Faker::Artist.name,
+    password: "123456"}
   User.create(user_data)
 end
 puts "Finish seeding Users"
