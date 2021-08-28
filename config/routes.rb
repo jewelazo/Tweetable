@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'design/components'
+  get 'design/sections'
   root to: 'tweets#index'
   resources :comments
   resources :tweets

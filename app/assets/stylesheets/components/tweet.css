@@ -1,0 +1,11 @@
+.section-tweet{
+    padding: 48px 0px ;
+}
+
+.container-tweet{
+    margin: auto;
+    max-width: 600px;   
+}
+.fila-tweet{
+    display: flex;
+}
