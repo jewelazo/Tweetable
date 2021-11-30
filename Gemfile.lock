@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 4767edc5a11215ff2c023b582d1cb14ffe4e276b
+  revision: 1da056158dad0e69e0472062c36ad242ea532ee5
   branch: master
   specs:
     faker (2.19.0)
@@ -84,7 +84,7 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
-    ffi (1.15.3)
+    ffi (1.15.4)
     globalid (0.5.2)
       activesupport (>= 5.0)
     i18n (1.8.10)
@@ -106,7 +106,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
-    nokogiri (1.12.3)
+    nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -114,6 +114,7 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    prettyprint (0.1.0)
     puma (4.3.8)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -232,6 +233,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
+  prettyprint
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   rubocop
