@@ -3,26 +3,25 @@
     <div class="body-main">
         <% if current_user %>
             <%= form_with   model:@tweet_new do |form| %>
-            <div class="form-tweeter">
-                <% if current_user.avatar.attached?%>
-                    <%= image_tag  current_user.avatar %>
-                <% else %>
-                    <img src="/images/avatar.png" alt="anonymus">
-                <% end %>
-                <div>
-                    <%= form.text_field :body ,placeholder: "Remember to thing before write..." %>
-                    <% if @tweet_new.errors.messages[:body].any? %>
-                    <span class="content--sm input__error-message">
-                        <%= @tweet_new.errors.messages[:body].join(", ")%>
-                    </span>
+                <div class="form-tweeter">
+                    <% if current_user.avatar.attached?%>
+                        <%= image_tag  current_user.avatar %>
+                    <% else %>
+                        <img src="/images/avatar.png" alt="anonymus">
                     <% end %>
-                    <div class="tweet-button">
-                        <%= form.submit "Tweet" %>
+                    <div>
+                        <%= form.text_field :body ,placeholder: "Remember to thing before write..." %>
+                        <% if @tweet_new.errors.messages[:body].any? %>
+                        <span class="content--sm input__error-message">
+                            <%= @tweet_new.errors.messages[:body].join(", ")%>
+                        </span>
+                        <% end %>
+                        <div class="tweet-button">
+                            <%= form.submit "Tweet" %>
+                        </div>
                     </div>
-                </div>
-            </div>      
-        <% end %>
-
+                </div>      
+            <% end %>
         <% end %>
         
         <div class="cards-container">

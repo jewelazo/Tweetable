@@ -1,60 +1,93 @@
-<div class="section-tweet">
-    <div class="container-tweet">
-        <div class="heading--xs">Tuit Detail</div>
-    <ul>
-        <% if  @tweet.user.avatar.attached?%>
-            <div><%= image_tag @tweet.user.avatar %></div>
-        <% else %>
-            <div><img src="/images/avatar.png" alt="anonymus"></div>
-        <% end %>
-        <li><%= @tweet.user.name %> <%= link_to "@#{@tweet.user.username}", tweets_path  %></li>
-        <li><p class="content--sm gray-300"><%= time_ago_in_words(@tweet.created_at) %></p></li>
-        <li><%= @tweet.body %></li>
-        <li><%= @tweet.comments_count%></li>
-    </ul>
-
-    <%= form_with model:@comment_new do |form| %>
-        <div class="flex gap-16 mb-8 flex-column">
-            <div class="input">
-                <div class="input__container">
-                    <%= form.text_area :body,placeholder: "Remember to thing before write..." ,  class: "input__content"%>
-                </div>
-                
-            </div>
-            <%= form.hidden_field :tweet_id, value: @comment_new.tweet_id %>
-            <%= form.hidden_field :user_id, value: @comment_new.user_id %>
-            <%= form.submit "Comment", class: "btn btn--primary btn--fit-content " %>
-            <% if @comment_new.errors.messages[:body].any? %>
-                <span class="content--sm input__error-message">
-                    <%= @comment_new.errors.messages[:body].join(", ")%>
-                </span>
-            <% end %>
-            
-
-        </div>
-    <% end %>
-
-
-    <% @comments.each do |comment| %>
-        <% break if comment.id.nil? %>
-        <div>
-            <ul>
-                <% if  comment.user.avatar.attached?%>
-                    <div><%= image_tag comment.user.avatar %></div>
+<div class="tweet-container">
+    <div class="title-home">Tuit Detail</div>
+    <div>
+        <div class="body-main">
+            <div class="card-tweet">
+                <% if  @tweet.user.avatar.attached?%>
+                    <div><%= image_tag @tweet.user.avatar %></div>
                 <% else %>
                     <div><img src="/images/avatar.png" alt="anonymus"></div>
                 <% end %>
-                <li><%= comment.user.name %> <%= link_to "@#{comment.user.username}", tweets_path %></li>
-                <li><p class="content--sm gray-300"><%= time_ago_in_words(comment.created_at) %></p></li>
-                <li><%= comment.body %></li>
-                <li><%= link_to "edit", "/tweets/#{comment.tweet.id}/comments/#{comment.id}/edit" %></li>
-                <li><%= link_to "delete", "/tweets/#{comment.tweet.id}/comments/#{comment.id}", method: :delete %></li>
-            </ul>
+                <div class="card-tweet-description">
+                    <div class="card-tweet-top">
+                        <span class="name"><%= @tweet.user.name %></span>
+                        <span><%= link_to "@#{@tweet.user.username}", tweets_path %></span>
+                        <span><%= time_ago_in_words(@tweet.created_at) %></span>
+                    </div>
+                    <p>
+                        <%= @tweet.body %>
+                    </p>
+                    <div class="footer-card-section">
+                        <div class="icons-left">
+                            <%= link_to image_tag("/images/icons/comment-icon.svg"), "/tweets/#{@tweet.id}/comments" %>
+                            <span><%= @tweet.comments_count %></span>
+                        </div>
+                        <% if current_user &&  current_user.tweets.include?(@tweet)  %>
+                            <div class="icons-right">
+                                <%= link_to image_tag("/images/icons/trash-2.svg") ,tweet_path(@tweet), method: :delete %>
+                                <%= link_to image_tag("/images/icons/edit.svg") , edit_tweet_path(@tweet)  %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+
+            <% if current_user %>
+                <%= form_with   model:@comment_new do |form| %>
+                    <div class="form-tweeter">
+                        <% if current_user.avatar.attached?%>
+                            <%= image_tag  current_user.avatar %>
+                        <% else %>
+                            <img src="/images/avatar.png" alt="anonymus">
+                        <% end %>
+                        <div>
+                            <%= form.text_field :body ,placeholder: "Remember to thing before write..." %>
+                            <% if @comment_new.errors.messages[:body].any? %>
+                            <span class="content--sm input__error-message">
+                                <%= @comment_new.errors.messages[:body].join(", ")%>
+                            </span>
+                            <% end %>
+                            <div class="tweet-button comment-button">
+                                <%= form.submit "Comment" %>
+                            </div>
+                        </div>
+                    </div>
+                    <%= form.hidden_field :tweet_id, value: @comment_new.tweet_id %>
+                    <%= form.hidden_field :user_id, value: @comment_new.user_id %>      
+                <% end %>
+            <% end %>
         </div>
-    <% end %>
+        <div>
+            <% @comments.each do |comment|%>
+                <% break if comment.id.nil? %>
+                <div class="card-tweet">
+                    <% if  comment.user.avatar.attached?%>
+                        <div><%= image_tag comment.user.avatar %></div>
+                    <% else %>
+                        <div><img src="/images/avatar.png" alt="anonymus"></div>
+                    <% end %>
+                    <div class="card-tweet-description">
+                        <div class="card-tweet-top">
+                            <span class="name"><%= comment.user.name %></span>
+                            <span><%= link_to "@#{comment.user.username}", tweets_path %></span>
+                            <span><%= time_ago_in_words(comment.created_at) %></span>
+                        </div>
+                        <p>
+                            <%= comment.body %>
+                        </p>
+                        <div class="footer-card-section comment-options">
+                            <% if current_user &&  current_user.comments.include?(comment)  %>
+                                <div class="icons-right">
+                                    <%= link_to image_tag("/images/icons/trash-2.svg") , "/tweets/#{comment.tweet.id}/comments/#{comment.id}", method: :delete %>
+                                    <%= link_to image_tag("/images/icons/edit.svg") , "/tweets/#{comment.tweet.id}/comments/#{comment.id}/edit"  %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
 
-
-    </div>
-</div>
+            <% end %>
+        </div>
 
 <%= link_to "Back" ,tweets_path %>
