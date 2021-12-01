@@ -1,16 +1,19 @@
-<p>Edit Comment</p>
-
+<div class="edit-form">
+    <span>Edit Tweet</span>
+</div>
 <%= form_with model: @comment  do |form| %>
+    <div class="edit-body-container">
+        <span><%= form.label :body %></span> 
+        <%= form.text_area :body  %>
+        <% if @comment.errors.messages[:body].any? %>
+            <span class="content--sm input__error-message">
+                <%= @comment.errors.messages[:body].join(", ")%>
+            </span>
+        <% end %>
+        <%= form.hidden_field :tweet_id, value: @comment.tweet_id %>
+        <%= form.hidden_field :user_id, value: @comment.user_id %>
 
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-    <%= form.hidden_field :tweet_id, value: @comment.tweet_id %>
-    <%= form.hidden_field :user_id, value: @comment.user_id %>
-    <% if @comment.errors.messages[:body].any? %>
-        <span class="content--sm input__error-message">
-            <%= @comment.errors.messages[:body].join(", ")%>
-        </span>
-    <% end %>
-
-  <%= form.submit class: "btn btn--primary btn--fit-content" %>
+        <%= form.submit "Edit" ,class: "edit-submit" %>
+    </div>    
 <% end %>
+

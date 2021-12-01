@@ -162,3 +162,62 @@
 .navbar-tweeter a:hover{
     color: #1d74f2;
 }
+
+.edit-form{
+    width: 600px;
+    height: 64px;
+    background: #FFFFFF;
+    border: 1px solid #EBEEF0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-form span{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 32px;
+    color: #000000;
+
+}
+
+.edit-body-container{
+    padding: 26px 170px 16px 170px;
+    width: 600px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #EBEEF0;
+
+}
+.edit-body-container span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    display: block;
+}
+.edit-body-container textarea{
+    overflow: hidden;
+    width: 100%;
+    resize: none;
+    height: 160px;
+    padding: 8px 16px 32px 16px;
+    border: 1px solid #767676;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.edit-submit{
+    padding: 8px 16px;
+    width: 60px;
+    background: #1DA1F2;
+    border-radius: 100px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
