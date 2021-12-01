@@ -1,44 +1,66 @@
-<div class="section-tweet">
-    <div class="container-tweet">
-        <div class="heading--xs">Home</div>
-        <%= form_with model:@tweet_new do |form| %>
-                <div class="flex gap-16 mb-8 flex-column">
-                    <div class="input">
-                        <div class="input__container">
-                            <%= form.text_area :body,placeholder: "Remember to thing before write..." ,  class: "input__content"%>
-                        </div>
-                        <% if @tweet_new.errors.messages[:body].any? %>
-                        <span class="content--sm input__error-message">
-                            <%= @tweet_new.errors.messages[:body].join(", ")%>
-                        </span>
-                        <% end %>
+<div class="tweet-container">
+    <div class="title-home">Home</div>
+    <div class="body-main">
+        <% if current_user %>
+            <%= form_with   model:@tweet_new do |form| %>
+            <div class="form-tweeter">
+                <% if current_user.avatar.attached?%>
+                    <%= image_tag  current_user.avatar %>
+                <% else %>
+                    <img src="/images/avatar.png" alt="anonymus">
+                <% end %>
+                <div>
+                    <%= form.text_field :body ,placeholder: "Remember to thing before write..." %>
+                    <% if @tweet_new.errors.messages[:body].any? %>
+                    <span class="content--sm input__error-message">
+                        <%= @tweet_new.errors.messages[:body].join(", ")%>
+                    </span>
+                    <% end %>
+                    <div class="tweet-button">
+                        <%= form.submit "Tweet" %>
                     </div>
                 </div>
-        <%= form.submit "Tweet", class: "btn btn--primary btn--fit-content " %>
+            </div>      
         <% end %>
-    
 
-
-        <div>
+        <% end %>
+        
+        <div class="cards-container">
             <% @tweets.each do |tweet| %>
-
-                <ul>
+                <div class="card-tweet">
                     <% if  tweet.user.avatar.attached?%>
                         <div><%= image_tag tweet.user.avatar %></div>
                     <% else %>
                         <div><img src="/images/avatar.png" alt="anonymus"></div>
                     <% end %>
-                    <li><%= tweet.user.name %> <%= link_to "@#{tweet.user.username}", tweets_path %></li>
-                    <li><p class="content--sm gray-300"><%= time_ago_in_words(tweet.created_at) %></p></li>
-                    <li><%= link_to "#{tweet.body}","/tweets/#{tweet.id}/comments"%></li>
-                    <li><%= tweet.comments_count %></li>
-                    <li><%= link_to "edit", edit_tweet_path(tweet) %></li>
-                    <li><%= link_to "delete", tweet_path(tweet), method: :delete %></li>
-                </ul>
-
+                    <div class="card-tweet-description">
+                        <div class="card-tweet-top">
+                            <span class="name"><%= tweet.user.name %></span>
+                            <span><%= link_to "@#{tweet.user.username}", tweets_path %></span>
+                            <span><%= time_ago_in_words(tweet.created_at) %></span>
+                        </div>
+                        <p>
+                            <%= tweet.body %>
+                        </p>
+                        <div class="footer-card-section">
+                            <div class="icons-left">
+                                <%= link_to image_tag("/images/icons/comment-icon.svg"), "/tweets/#{tweet.id}/comments" %>
+                                <span><%= tweet.comments_count %></span>
+                            </div>
+                            <% if current_user &&  current_user.tweets.include?(tweet)  %>
+                                <div class="icons-right">
+                                    <%= link_to image_tag("/images/icons/trash-2.svg") ,tweet_path(tweet), method: :delete %>
+                                    <%= link_to image_tag("/images/icons/edit.svg") , edit_tweet_path(tweet)  %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
             <% end %>
         </div>
     </div>
-   
- </div>
+</div>
+
+
+<%# ---------------------------------------------- %>
 
