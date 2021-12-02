@@ -28,15 +28,26 @@
             <% @tweets.each do |tweet| %>
                 <div class="card-tweet">
                     <% if  tweet.user.avatar.attached?%>
-                        <div><%= image_tag tweet.user.avatar %></div>
+                        <%= image_tag tweet.user.avatar %>
                     <% else %>
-                        <div><img src="/images/avatar.png" alt="anonymus"></div>
+                        <img src="/images/avatar.png" alt="anonymus">
                     <% end %>
                     <div class="card-tweet-description">
                         <div class="card-tweet-top">
                             <span class="name"><%= tweet.user.name %></span>
-                            <span><%= link_to "@#{tweet.user.username}", tweets_path %></span>
-                            <span><%= time_ago_in_words(tweet.created_at) %></span>
+                            <span>
+                                <% if current_user && current_user.tweets.include?(tweet)%>
+                                    <%= link_to "@#{tweet.user.username}", edit_user_registration_path %>
+                                <% else %>
+                                    <%= "@#{tweet.user.username}" %>
+                                <% end %>
+                            </span>
+                           
+                            <% if (Time.zone.today.to_datetime-tweet.created_at.to_datetime).to_i ==0 %>
+                                <span><%= time_ago_in_words(tweet.created_at,scope: 'datetime.distance_in_words.abbrv') %></span>
+                            <% else %>
+                                <span><%= tweet.created_at.strftime('%b %d,%Y') %></span>
+                            <% end %>
                         </div>
                         <p>
                             <%= tweet.body %>

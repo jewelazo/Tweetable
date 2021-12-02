@@ -1,0 +1,83 @@
+.user-title-container{
+    width: 600px;
+    height: 64px;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #EBEEF0;
+}
+.user-title-container span{
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 32px;
+    color: #000000;
+}
+.user-form-container{
+    padding: 26px 170px 16px 170px;
+    width: 600px;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #0F1419;
+}
+.user-form-container form{
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+}
+.user-form-container input{
+    border: 1px solid #5B7083;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 260px;
+}
+.user-form-container label{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #0F1419;
+}
+.buttons-user-section{
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+    
+}
+
+.buttons-user-section input{
+    color: #FFFFFF;
+    background: #1DA1F2;
+    border-radius: 100px;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    width: auto;
+}
+.button_to input,.btn-2,.buttons-user-section a{
+    color:#1DA1F2 ;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.input-file-user input{
+    font-size: 13px;
+    padding: 10px;  
+}
+.user-form-container i,em{
+    font-size: 12px;
+}
+
+.buttons-user-section .btn-3{
+    color:#1DA1F2 ;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.back-anchor{
+    margin: 0 auto;
+}
