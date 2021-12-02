@@ -1,1 +1,1 @@
-app/assets/views/design* linguist-vendored
+*.html.erb linguist-detectable=false
