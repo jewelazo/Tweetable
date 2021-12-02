@@ -10,12 +10,12 @@
   </head>
 
   <body>
-    <div class="navbar__right align-center">
+    <div class="navbar-tweeter">
       <% if user_signed_in? %>
-        <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn--primary" %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn--secondary" %>
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: "edit-profile" %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "session-tweet" %>
       <% else %>
-        <%= link_to 'Login', new_user_session_path, class: "btn btn--secondary" %>
+        <%= link_to 'Login', new_user_session_path, class: "session-tweet" %>
       <% end %>
     </div>
     <% flash.each do |type, message|%>

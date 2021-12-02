@@ -1,11 +1,228 @@
-.section-tweet{
-    padding: 48px 0px ;
+.tweet-container{
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid #EBEEF0;
+    box-sizing: border-box;
+}
+.title-home{
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    border-bottom: 1px solid #EBEEF0;
+    background-color: #FFFFFF;
+}
+.body-main{
+    display: grid;
+    gap: 12px;
+}
+.card-tweet{
+    padding: 8px 16px;
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid #EBEEF0;
+    border-bottom: 1px solid #EBEEF0; ;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+}
+.card-tweet img{
+    width: 50px;
+    height: 50px;
+}
+.card-tweet-description{
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+}
+.card-tweet-description p{
+
+    font-weight: normal;
+    color: #000000;
+    font-size: 15px;
+    line-height: 24px;
+}
+.card-tweet-top{
+    display: flex;
+    gap: 8px;
+}
+.card-tweet-top .name{
+    font-weight: bold;
+    color: #0F1419;
+}
+.card-tweet-top span,a{
+    color: #5B7083;
+    font-weight: normal;
 }
 
-.container-tweet{
-    margin: auto;
-    max-width: 600px;   
-}
-.fila-tweet{
+.footer-card-section{
+    margin-top: 8px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 510px;
 }
+.footer-card-section img{
+    width: 20px;
+    height: 17.5px;
+    
+}
+.icons-left{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #5B7083;
+    font-weight: normal;
+    font-size: 14px;
+}
+.icons-right{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.icons-right img{
+    cursor: pointer;
+}
+.form-tweeter{
+    width: 600px;
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #FFFFFF;
+    
+}
+
+
+.form-tweeter img,.card-tweet > img{
+    width: 50px;
+    height: 50px;
+    background: #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 100px;
+    object-fit: contain;
+}
+
+.form-tweeter input{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 510px;
+    border: none;
+}
+.form-tweeter input::placeholder{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #5B7083;
+    
+}
+
+.tweet-button input{
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: #1DA1F2;
+    border-radius: 100px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    width: 76px;
+}
+
+.tweet-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-tweeter{
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.session-tweet{
+    padding: 4px 16px;
+    border: 1px solid #1DA1F2;
+    border-radius: 100px;
+    color: #1DA1F2;
+
+}
+.edit-profile{
+    padding: 4px 16px;
+    color: #1DA1F2;
+}
+
+
+.navbar-tweeter a:hover{
+    color: #1d74f2;
+}
+
+.edit-form{
+    width: 600px;
+    height: 64px;
+    background: #FFFFFF;
+    border: 1px solid #EBEEF0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-form span{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 32px;
+    color: #000000;
+
+}
+
+.edit-body-container{
+    padding: 26px 170px 16px 170px;
+    width: 600px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #EBEEF0;
+
+}
+.edit-body-container span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    display: block;
+}
+.edit-body-container textarea{
+    overflow: hidden;
+    width: 100%;
+    resize: none;
+    height: 160px;
+    padding: 8px 16px 32px 16px;
+    border: 1px solid #767676;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.edit-submit{
+    padding: 8px 16px;
+    width: 60px;
+    background: #1DA1F2;
+    border-radius: 100px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+

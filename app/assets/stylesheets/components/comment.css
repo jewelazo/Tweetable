@@ -1,0 +1,7 @@
+.comment-button input{
+    width: 106px;
+}
+
+.comment-options{
+    justify-content: flex-end;
+}
